@@ -13,6 +13,12 @@ final int GAME      = 2;
 final int PAUSE     = 3;
 final int GAMEOVER  = 4;
 
+//Brick Variables
+int [] x;    //Array of x Coordinates
+int [] y;    //Array of y Coordinates
+int n;      //Number of Elements
+int brickD; //Diameter of Bricks
+
 //Colour Pallette
 color blue          = #08F7FE;
 color lightblue     = #09FBD3;
@@ -21,17 +27,43 @@ color yellow        = #F5D300;
 color darkblue      = #0310EA;
 
 //Keyboard Variables
-boolean akey, dkey;
+boolean leftKey, rightKey;
 
+//Entity Variables
+int circleX, circleD, circleY; //Paddle
+int ballX, ballY, ballD; //Ball
+float Dcircle, ballR, circleR; //Collisions
+int vx, vy; //Velocity
+int timer = 100; //Timer
 
 void setup(){//                        Beginning of Setup
   size(800,800);
   mode = INTRO;
   
+  //Brick Array Setup
+  n = 3;
+  x = new int[n];
+  y = new int[n];
+  brickD = 100;
+  
   //Text
   textAlign(CENTER,CENTER);
-  fontg = createFont("Hexadecimal.otf",150);
+  fontg = createFont("Hexadecimal.otf",120);
   
+  //Initialize Paddles
+  circleX = width/2;
+  circleY = height;
+  circleD = 150;
+  
+  //Initialize Ball
+  ballX = width/2;
+  ballY = 500;
+  ballD = 30;
+  vy = 7;
+  vx = 0;
+  
+  //Initialize Keyboard
+  leftKey = rightKey = false;
   
 }//                                    End of Setup
 
