@@ -16,8 +16,10 @@ final int GAMEOVER  = 4;
 //Brick Variables
 int [] x;    //Array of x Coordinates
 int [] y;    //Array of y Coordinates
+boolean[] alive;
 int n;      //Number of Elements
 int brickD; //Diameter of Bricks
+int tempx, tempy;
 
 //Colour Pallette
 color blue          = #08F7FE;
@@ -34,6 +36,10 @@ int circleX, circleD, circleY; //Paddle
 int ballX, ballY, ballD; //Ball
 float Dcircle, ballR, circleR; //Collisions
 int vx, vy; //Velocity
+
+//Score Variables
+int score = 0;
+int lives = 3;
 int timer = 100; //Timer
 
 void setup(){//                        Beginning of Setup
@@ -41,10 +47,27 @@ void setup(){//                        Beginning of Setup
   mode = INTRO;
   
   //Brick Array Setup
-  n = 3;
+  n = 40;
   x = new int[n];
   y = new int[n];
-  brickD = 100;
+  alive = new boolean[n];
+  brickD = 30;
+  tempx = 60;
+  tempy = 100;
+  
+  
+  int i = 0;
+  while (i < n) {
+    x[i] = tempx;
+    y[i] = tempy;
+    alive[i] = true;
+    tempx = tempx + 75;
+    if (tempx >= width) {
+      tempy = tempy + 100;
+      tempx = 60;
+    }
+    i=i+1;
+  }
   
   //Text
   textAlign(CENTER,CENTER);
@@ -58,7 +81,7 @@ void setup(){//                        Beginning of Setup
   //Initialize Ball
   ballX = width/2;
   ballY = 500;
-  ballD = 30;
+  ballD = 10;
   vy = 7;
   vx = 0;
   

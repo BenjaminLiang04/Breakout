@@ -3,8 +3,11 @@
 void intro() {//              Beginning of intro
   background(0);
   
-   //Intro Design/Patterns
- 
+  //Intro Design/Patterns
+  strokeWeight(10);
+  stroke(darkblue,175);
+  line(0,0,800,800);
+
   
   //Title
   fill(lightblue);
