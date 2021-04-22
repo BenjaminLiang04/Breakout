@@ -3,8 +3,25 @@
 //Programming 11
 //April 19th, 2021
 
+//Minim
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+//Sound Effects
+Minim minim;
+AudioPlayer theme, coin, bump, gameover;
+
 //Fonts
 PFont fontg;
+
+//Animated Gif
+PImage[] gif;
+int frames;
+int f;
 
 //Mode Framework
 int mode;
@@ -55,7 +72,6 @@ void setup(){//                        Beginning of Setup
   tempx = 60;
   tempy = 100;
   
-  
   int i = 0;
   while (i < n) {
     x[i] = tempx;
@@ -67,6 +83,14 @@ void setup(){//                        Beginning of Setup
       tempx = 60;
     }
     i=i+1;
+    
+  //Minim
+  minim = new Minim(this);
+  theme = minim.loadFile("mario bros theme.mp3");
+  coin  = minim.loadFile("coin.wav");
+  bump  = minim.loadFile("bump.wav");
+  gameover = minim.loadFile("gameover.wav");
+  
   }
   
   //Text
@@ -84,6 +108,16 @@ void setup(){//                        Beginning of Setup
   ballD = 10;
   vy = 7;
   vx = 0;
+ 
+  //Initialize Gif
+  frames = 12;
+  gif = new PImage[frames];
+
+  int o = 0;
+  while(o < frames){
+    gif[o] = loadImage("frame_"+o+"_delay-0.07s.gif");
+    o=o+1;
+  }
   
   //Initialize Keyboard
   leftKey = rightKey = false;

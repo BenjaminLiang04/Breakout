@@ -11,6 +11,8 @@ void manageBrick(int i) {//                  Beginning of manageBrick
       vy = (ballY - y[i])/3;
       alive[i] = false;
       score = score + 1;
+      coin.rewind();
+      coin.play();
     }
 }//                                     End of manageBrick
 

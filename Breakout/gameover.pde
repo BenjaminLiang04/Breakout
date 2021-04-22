@@ -2,6 +2,8 @@
 
 void gameover() {//            Beginning of gameover
   background (0);
+  theme.pause();
+  gameover.play();
   
   if (score >= n) {
     fill(pink);
@@ -24,6 +26,7 @@ void gameover() {//            Beginning of gameover
 
 void gameoverClicks() {//      Beginning of gameoverClicks
   mode = INTRO;
+  theme.rewind();
   reset();
   
 }//                            End of gameoverClicks

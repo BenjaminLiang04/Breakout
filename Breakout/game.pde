@@ -45,6 +45,9 @@ void game() {//                Beginning of game
     ballY = ballY + vy;
     ballX = ballX + vx;
   }
+  if (vy == 0) {
+    vy = vy + 1;
+  }
   
   //Ball Reset
   if (ballY > height) {
@@ -54,6 +57,8 @@ void game() {//                Beginning of game
    vy = 7;
    vx = 0;
    timer = 100;
+   bump.rewind();
+   bump.play();
   }
   
   //Move Paddle
@@ -93,6 +98,8 @@ void game() {//                Beginning of game
   if (Dcircle <= ballR + circleR) {
     vx = (ballX - circleX)/10;
     vy = (ballY - circleY)/10;
+    bump.rewind();
+    bump.play();
   }
     
   
